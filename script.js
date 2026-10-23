@@ -48,3 +48,29 @@ function calculate() {
         expression = "";
     }
 }
+
+document.addEventListener("keydown", function (event) {
+  const key = event.key;
+
+  // Numbers 0-9
+  if (key >= "0" && key <= "9") {
+    appendValue(key);
+  }
+  // Operators and decimal point
+  else if (key === "+" || key === "-" || key === "*" || key === "/" || key === "." || key === "%") {
+    appendValue(key);
+  }
+  // Enter or = calculates the result
+  else if (key === "Enter" || key === "=") {
+    event.preventDefault();
+    calculate();
+  }
+  // Backspace deletes the last character
+  else if (key === "Backspace") {
+    deleteLast();
+  }
+  // Escape or C clears everything
+  else if (key === "Escape" || key.toLowerCase() === "c") {
+    clearDisplay();
+  }
+});
